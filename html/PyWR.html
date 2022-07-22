@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PyWR module &mdash; PyWR 1.2.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Weather-typing" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PyWR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Weather-typing</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyWR module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyWR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">Weather-typing</a> &raquo;</li>
+      <li>PyWR module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/PyWR.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-PyWR">
+<span id="pywr-module"></span><h1>PyWR module<a class="headerlink" href="#module-PyWR" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="PyWR.calc_classifiability">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">calc_classifiability</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.calc_classifiability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement the Michaelangeli (1995) Classifiability Index.</p>
+<p>The variable naming here is not pythonic but follows the notation in the 1995 paper
+which makes it easier to follow what is going on. You shouldn’t need to call
+this function directly but it is called in cluster_xr_eof.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>array</em>) – A cluster centroid</p></li>
+<li><p><strong>Q</strong> (<em>array</em>) – Another cluster centroid</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ci</strong> – Classifiability index value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.download_data">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">download_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.download_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>A smart function to download data from IRI Data Library.</p>
+<p>If the data can be read in and force_download is False, will read from file
+Otherwise will download from IRIDL and then read from file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The url pointing to the data.nc file.</p></li>
+<li><p><strong>authkey</strong> (<em>str</em>) – The authentication key for IRI DL (see above).</p></li>
+<li><p><strong>outfile</strong> (<em>str</em>) – The data filename.</p></li>
+<li><p><strong>force_download</strong> (<em>Bool</em><em>, </em><em>optional</em>) – False if it’s OK to read from existing file,
+True if data <em>must</em> be re-downloaded.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>data</strong> – Dataframe of dataset specified in url or file.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.get_classifiability_index">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">get_classifiability_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centroids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#PyWR.get_classifiability_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the classifiability of a set of centroids.</p>
+<p>This function will compute the classifiability index for a set of centroids and
+indicate which is the best one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>centroids</strong> (<em>array</em>) – Input array of centroids, indexed [simulation, dimension]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>classifiability</strong> (<em>float</em>) – Classifiability index value.</p></li>
+<li><p><strong>best_part</strong> (<em>int</em>) – The best centroid.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.get_number_eof">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">get_number_eof</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_to_explain</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#PyWR.get_number_eof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of EOFs of X that explain a given variance proportion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray</em>) – </p></li>
+<li><p><strong>var_to_explain</strong> (<em>float</em>) – Proportion (0 to 1) of variance to be explained.</p></li>
+<li><p><strong>plot</strong> (<em>Bool</em><em>, </em><em>optional</em>) – Default plot=Flase will not generate plot</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>n_eof</strong> (<em>float</em>)</p></li>
+<li><p><em>Number of EOF’s retained for the chosen percentage of variance.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Plot generated by the function is ‘number of EOFs’ versus
+‘Cumulative proportion of variance explained’.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.loop_kmeans">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">loop_kmeans</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cluster</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#PyWR.loop_kmeans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute weather types using k means clustering.</p>
+<p>Should have more information on what this does.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array</em>) – PCA reanalysis data.</p></li>
+<li><p><strong>n_cluster</strong> (<em>int</em>) – How many clusters to compute.</p></li>
+<li><p><strong>n_sim</strong> (<em>int</em>) – how many times to initialize the clusters
+(note: computation increases order (n_sim**2)).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>centroids</strong> (<em>array</em>) – Centroids.</p></li>
+<li><p><strong>w_types</strong> (<em>array</em>) – Weather types.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>X should be in reduced dimension space already; indexed [time, dimension].</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.plot_procrustesAnalysis">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">plot_procrustesAnalysis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Procrustes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.plot_procrustesAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot results of procrustes analysis.</p>
+<p>Contour plots which show the different elements of the
+procrustes analysis used to correct the weather types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Procrustes</strong> (<em>dataFrame</em>) – Output of procrustesAnalysis().</p></li>
+<li><p><strong>savefig</strong> (<em>Bool optional</em>) – Determines if plot will be saved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>plt.show()</strong> – Contour plots showing model weather types without correction,
+and the scaled, rotated, and translated data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib plot</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If savefig=True, figure will be saved to current directory as
+‘<a href="#id1"><span class="problematic" id="id2">ProcrustesAnalysis_</span></a> + {model} + .pdf’</p>
+<p><cite>Procrustes</cite> includes the original model weather type data, as well as the
+scale,rotation, and translation data used to correct the model
+data in the procrustes analysis.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.plot_procrustesCorrection">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">plot_procrustesCorrection</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">WTf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.plot_procrustesCorrection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the WTf output of the procrustes analysis.</p>
+<p>Plot the corrected weather type model outputs against the
+original WT model and reanalysis datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>WTf</strong> (<em>dataFrame</em>) – Output of procrustesAnalysis() which includes
+reanalysis and model WTs, and the corrected WTs.</p></li>
+<li><p><strong>savefig</strong> (<em>Bool</em><em>, </em><em>optional</em>) – Determines if plot will be saved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>plt.show()</strong> – Contour plots showing comparison between model, reanalysis,
+and corrected weather types.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib plot</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If savefig=True, figure will be saved to current directory as
+‘<a href="#id3"><span class="problematic" id="id4">ProcrustesCorrection_</span></a> + {model} + .pdf’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.plot_reaVSmod">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">plot_reaVSmod</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">WTmod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WTrea</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reanalysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MERRA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.plot_reaVSmod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot reanalysis and model datasets</p>
+<p>Plots smoothed reanalysis data and
+smoothed, interpolated model datasets as contour maps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>WTmod</strong> (<em>dataFrame</em>) – Model dataset.</p></li>
+<li><p><strong>WTrea</strong> (<em>dataFrame</em>) – Reanalysis dataset.</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – Name of model dataset.</p></li>
+<li><p><strong>reanalysis</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of reanalysis dataset.
+Default reanalysis=’MERRA’ (data used in example calculations).</p></li>
+<li><p><strong>savefig</strong> (<em>Bool</em><em>, </em><em>optional</em>) – Determines if plot will be saved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>plt.show()</strong> – Contour plot showing reanalysis and model WTs.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib plot</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If savefig=True, figure will be saved to current directory as ‘plot_reaVSmod.png’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.prepareDS_procrustes">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">prepareDS_procrustes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">WTmod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WTrea</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.prepareDS_procrustes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare model and reanalysis datasets for analysis / plotting.</p>
+<p>Takes raw mode and datasets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>WTmod</strong> (<em>dataFrame</em>) – Model dataset</p></li>
+<li><p><strong>WTrea</strong> (<em>dataFrame</em>) – Reanalysis dataset</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>WTmod</strong> (<em>dataFrame</em>) – Smoothed version of the original model dataset</p></li>
+<li><p><strong>WTrea</strong> (<em>dataFrame</em>) – Smoothed, interpolated version of the reanalysis dataset</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><cite>WTrea</cite> domain needs to be slightly larger than <cite>WTmod</cite> domain
+in order to avoid NaNs after interpolation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.procrustes2">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">procrustes2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.procrustes2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform procrustes analysis.</p>
+<p>Needs more info on what exactly this is doing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data1</strong> (<em>dataFrame</em>) – Reanalysis dataFrame.</p></li>
+<li><p><strong>data2</strong> (<em>dataFrame</em>) – Model dataFrame.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mtx1</strong> (<em>array</em>) – Matrix to be mapped.</p></li>
+<li><p><strong>mtx2</strong> (<em>array</em>) – Target matrix.</p></li>
+<li><p><strong>disparity</strong> (<em>float</em>) – Dissimilarity between the two datasets.</p></li>
+<li><p><strong>R</strong> (<em>ndarray</em>) – The matrix solution of the orthogonal Procrustes problem.
+Returned from scipy’s orthogonal_procrustes() function.</p></li>
+<li><p><strong>s</strong> (<em>float</em>) – Scale; Sum of the singular values of mtx1.T &#64; mtx2</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.procrustes2d">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">procrustes2d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'best'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.procrustes2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Procrustes analysis</p>
+<p>A port of MATLAB’s <cite>procrustes</cite> function to Numpy.
+– Modified by Á.G. Muñoz (<a class="reference external" href="mailto:agmunoz&#37;&#52;&#48;iri&#46;columbia&#46;edu">agmunoz<span>&#64;</span>iri<span>&#46;</span>columbia<span>&#46;</span>edu</a>)</p>
+<p>Procrustes analysis determines a linear transformation (translation,
+reflection, orthogonal rotation and scaling) of the points in Y to best
+conform them to the points in matrix X, using the sum of squared errors
+as the goodness of fit criterion.</p>
+<blockquote>
+<div><p>d, Z, [tform] = procrustes(X, Y)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array</em>) – The reference or target field.</p></li>
+<li><p><strong>Y</strong> (<em>array</em>) – The field to be transformed.</p></li>
+<li><p><strong>scaling</strong> (<em>Bool</em><em>, </em><em>optional</em>) – If False, the scaling component of the transformation is forced
+to 1.</p></li>
+<li><p><strong>reflection</strong> (<em>str</em><em> or </em><em>Bool</em><em>, </em><em>optional</em>) – If ‘best’ (default), the transformation solution may or may not
+include a reflection component, depending on which fits the data
+best. setting reflection to True or False forces a solution with
+reflection or no reflection respectively.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>d</strong> (<em>float</em>) – The residual sum of squared errors, normalized according to a
+measure of the scale of X, ((X - X.mean(axis=0))**2).sum()</p></li>
+<li><p><strong>Z</strong> (<em>array</em>) – The matrix of transformed Y-values.</p></li>
+<li><p><strong>tform</strong> (<em>dict</em>) – Specifying the rotation, translation and scaling that
+maps X –&gt; Y.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>X and Y must have equal numbers of  points (rows),
+but Y may have fewer dimensions (columns) than X.</p>
+<p>c: The translation component
+T: The orthogonal rotation and reflection component
+b: The scale component
+That is, Z = TRANSFORM.b * Y * TRANSFORM.T + TRANSFORM.c.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.procrustesAnalysis">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">procrustesAnalysis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">WTmod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WTrea</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reanalysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MERRA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SingleDay'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printDisparity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.procrustesAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run procrustes analysis</p>
+<p>Takes model weather type data and reanalysis weather type data and performs
+procrustes analysis to correct and improve reanalysis WT dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>WTmod</strong> (<em>dataFrame</em>) – Model WT dataset.</p></li>
+<li><p><strong>WTrea</strong> (<em>dataFrame.</em>) – Reanalysis WT dataset.</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – Name of the model data used.</p></li>
+<li><p><strong>reanalysis</strong> (<em>str</em>) – Name of the reanalysis data used.</p></li>
+<li><p><strong>smooth</strong> (<em>str</em><em>, </em><em>optional</em>) – Determines if data will be smoothed,
+can be either ‘SingleDay’ (no smoothing) or ‘5DayAVG’ (smoothing).</p></li>
+<li><p><strong>printDisparity</strong> (<em>Bool</em><em>, </em><em>optional</em>) – If True, disparity values for each weather type will be printed.
+Default printDisparity=False where no output is printed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>WTf</strong> (<em>Dataframe</em>) – Includes model, reanalysis, and adjusted reanalysis WT data.</p></li>
+<li><p><strong>Procrustes</strong> (<em>Dataframe</em>) – Includes model data and procrustes analysis with
+components of scale, rotation, translation.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.resort_labels">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">resort_labels</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.resort_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Re-sort cluster labels.</p>
+<p>Re-orders labels so that the lowest number is the most common,
+and the highest number is the least common.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>old_labels</strong> (<em>vector</em>) – The previous labels of the clusters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>new_labels</strong> – The new cluster labels, ranked by frequency of occurrence.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>vector</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="PyWR.shiftedColorMap">
+<code class="sig-prename descclassname"><span class="pre">PyWR.</span></code><code class="sig-name descname"><span class="pre">shiftedColorMap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">midpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shiftedcmap'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyWR.shiftedColorMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offset center of colormap</p>
+<p>Useful for data with a negative min and positive max and you want the
+middle of the colormap’s dynamic range to be at zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmap</strong> (<em>matplotlib colormap</em>) – The matplotlib colormap to be altered.</p></li>
+<li><p><strong>start</strong> (<em>float</em><em>, </em><em>optional</em>) – Offset from lowest point in the colormap’s range.
+Defaults to 0.0 (no lower offset).
+Should be between 0.0 and <cite>midpoint</cite>.</p></li>
+<li><p><strong>midpoint</strong> (<em>float</em><em>, </em><em>optional</em>) – The new center of the colormap.
+Defaults to 0.5 (no shift).
+Should be between 0.0 and 1.0.</p></li>
+<li><p><strong>stop</strong> (<em>float</em><em>, </em><em>optional</em>) – Offset from highest point in the colormap’s range.
+Defaults to 1.0 (no upper offset).
+Should be between <cite>midpoint</cite> and 1.0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>newcmap</strong> – New colormap that can be used for plotting.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib colormap</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>For midpoint, in general it should be  1 - vmax / (vmax + abs(vmin))</dt><dd><p>For example if your data range from -15.0 to +5.0 and you want
+the center of the colormap at 0.0, <cite>midpoint</cite> should be set to
+1 - 5/(5 + 15)) or 0.75</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Weather-typing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Muñoz, Resnick, Robertson, Doss-Gollin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
